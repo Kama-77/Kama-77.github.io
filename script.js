@@ -107,8 +107,8 @@ function verifierReponse() {
         questionIndex++;
         afficherQuestionOuDilemme();
     } else {
-        alert("Tu essaie de me mentir ? retour au début !");
-        location.reload();
+        alert("Tu essaie de me mentir ? Très bien, cela ne sert a rien de continuer alors... La page vas se fermer !");
+        window.close();
     }
 }
 
