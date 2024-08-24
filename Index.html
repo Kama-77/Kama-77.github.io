@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu de Piste</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Style pour la police creepy et le texte en rouge */
+        .creepy-input {
+            font-family: 'Creepster', cursive;
+            color: red;
+        }
+        .creepy-button {
+            font-family: 'Creepster', cursive;
+            color: red;
+            background-color: black;
+            border: 1px solid red;
+            padding: 10px;
+            cursor: pointer;
+        }
+        /* Style pour les pièces du puzzle */
+        .puzzle-piece {
+            border: 1px solid red;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            display: inline-block;
+            background-color: white;
+            color: black;
+        }
+        /* Conteneur du puzzle */
+        #puzzleContainer {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+    <!-- Lien vers Google Fonts pour utiliser la police Creepster -->
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Texte noir sur fond noir (au-dessus du champ de saisie du code) -->
+        <p class="hidden-text">The Answer is on roblox.</p>
+
+        <!-- Champ de saisie du code et bouton de validation -->
+        <h1>TAPER LE CODE SI VOUS VOULEZ CONTINUER</h1>
+        <input type="text" id="codeInput" placeholder="Entrez le code">
+        <button onclick="verifierCode()">Valider</button>
+
+        <!-- Message de confirmation trompeuse -->
+        <div id="messageFaux" style="display: none;">
+            <p style="color: green; font-weight: bold;">CORRECT</p>
+            <p>Pour passer à la suite, cliquez <a href="#" onclick="afficherVideoRickRoll()">ICI</a></p>
+        </div>
+
+        <!-- Texte noir sur fond noir (en dessous du champ de saisie du code) -->
+        <p class="hidden-text">Douglas Adams.</p>
+
+        <!-- Section pour la vidéo Rickroll en plein écran -->
+        <div id="rickRollVideo" style="display: none;">
+            <video id="rickRoll" width="100%" height="100%" controls autoplay>
+                <source src="RickRollCode.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo HTML5.
+            </video>
+        </div>
+
+        <!-- Section des devinettes -->
+        <div id="devinettes" style="display: none;">
+            <h2>Devinettes</h2>
+            <p id="question">Question ici</p>
+            <input type="text" id="reponseInput" placeholder="Entrez votre réponse">
+            <button id="verifierButton" onclick="verifierReponse()">Répondre</button>
+            <button id="aideButton" onclick="obtenirAide()" style="display: none;">Aide</button>
+            <div id="options" style="display: none;"></div>
+        </div>
+
+        <!-- Section pour afficher le message final et le bouton Continuer -->
+        <div id="messageFinal" style="display: none;">
+            <p class="creepy-input">En faisant une action qui entraîne la mort d'une personne, c'est comme si tu appuyais toi-même sur la gâchette.</p>
+            <button class="creepy-button" onclick="afficherQuestionFinale()">Continuer</button>
+        </div>
+
+        <!-- Section pour la question finale "Who killed Zee?" -->
+        <div id="questionFinale" style="display: none;">
+            <h2 class="creepy-input">Who killed Zee?</h2>
+            <input type="text" id="zeeAnswer" placeholder="Entrez la réponse">
+            <button class="creepy-button" onclick="verifierQuestionFinale()">Répondre</button>
+        </div>
+
+        <!-- Section du puzzle final -->
+        <div id="puzzle" style="display: none;">
+            <h2>Puzzle</h2>
+            <p>Arrangez les pièces pour compléter l'image ou la phrase.</p>
+            <div id="puzzleContainer"></div>
+            <button class="creepy-button" onclick="verifierPuzzle()">Valider Puzzle</button>
+        </div>
+
+        <!-- Lien vers la playlist YouTube -->
+        <div id="playlist" style="display: none;">
+            <p>Bien joué ! Vous avez accès à la suite !</p>
+            <a href="https://www.youtube.com/playlist?list=PL-175LGn0K3u4T1LBjVbKKyTnm9JneKji">Accéder à la suite</a>
+        </div>
+    </div>
+
+    <!-- Audio pour le son du pistolet -->
+    <audio id="gunshotSound" src="gunshot.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
